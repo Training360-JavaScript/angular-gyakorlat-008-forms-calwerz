@@ -27,6 +27,15 @@ export class EventEditorComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
+    onUpdate(f: NgForm, e: Event) {
+      if (e.id == 0)
+      {
+        this.eventService.create(e);
+      }
+      else
+      {
+        this.eventService.update(e);
+      }
+    }
 
 }

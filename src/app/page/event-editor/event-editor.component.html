@@ -4,15 +4,18 @@
       <div class="form-group">
         <label for="">Name</label>
         <input name="name" [(ngModel)]="event.name" type="text"
-          class="form-control" pattern=".{8,}" required>
-        <div [hidden]="eventForm.controls.name?.valid" class="error-message">
-          The name of the event must be...
+          class="form-control" pattern=".{8,25}" required>
+        <div [hidden]="eventForm.controls['name'].valid" class="error-message">
+          The name of the event must be between 8 and 25 chars.
         </div>
       </div>
       <div class="form-group">
         <label for="">Date</label>
         <input name="date" [(ngModel)]="event.date" type="text"
-          class="form-control">
+          class="form-control" pattern="^(\d{2}\\\d{2}\\\d{4})$">
+          <div [hidden]="eventForm.controls['date'].valid" class="error-message">
+            The date should be in the 00/00/0000 day/month/year format.
+          </div>
       </div>
       <div class="form-group">
         <label for="">Time</label>

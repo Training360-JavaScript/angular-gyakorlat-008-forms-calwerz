@@ -9,7 +9,8 @@ import { Event } from '../model/event';
 export class EventService {
 
   eventsUrl: string = "https://nettuts.hu/jms/feladat/events";
-
+  list: Array<Event> = [];
+  
   constructor(
     private http: HttpClient) {
   }
@@ -27,6 +28,14 @@ export class EventService {
       `${this.eventsUrl}/${event.id}`,
       event,
     );
+  }
+
+  create(event: Event): void {
+    this.list.push(event);
+  }
+
+  remove(id: number) : void {
+    this.list = this.list.filter(item => item.id == id);
   }
 
 }
